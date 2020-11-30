@@ -52,49 +52,92 @@ def takeCommand():
 
 if __name__=="__main__":
     wishMe()
-    while True:
-    # if 1:
-        query = takeCommand().lower()
+    query = takeCommand().lower()
+    if 'healthy day' in query:
+            print("\n***** Start day with healthy mode, have a greate day *****\n")
+            speak("Start day with healthy mode, have a greate day")
+            init_water =programmer.time()
+            init_eyes = programmer.time()
+            init_exercise = programmer.time()
+            watersecs = 40*60
+            exsecs = 50*60
+            eyessecs = 30*60
+
+            while True:
+                query = takeCommand().lower()
+                if programmer.time() - init_water > watersecs:
+                    print("Water Drinking time. (Enter 'd' to stop the alarm & 'x' to exit.)")
+                    programmer.musiconloop('./HealthyProgrammer/water.mp3')
+                    init_water = programmer.time()
+                    programmer.log_now("water","Drank Water at")
+
+                if programmer.time() - init_eyes >eyessecs:
+                    print("Eye exercise time. (Enter 'd' to stop the alarm & 'x' to exit.)")
+                    programmer.musiconloop('./HealthyProgrammer/eyes.mp3')
+                    init_eyes = programmer.time()
+                    programmer.log_now("eyes","Eyes Relaxed at")
+
+                if programmer.time() - init_exercise > exsecs:
+                    print("Physical Activity Time. (Enter 'd' to stop the alarm & 'x' to exit.) ")
+                    programmer.musiconloop('./HealthyProgrammer/physical.mp3')
+                    init_exercise = programmer.time()
+                    programmer.log_now("physical","Physical Activity done at")
+
+    # while True:
+    # # if 1:
+    #     query = takeCommand().lower()
 
         # Logic for executing tasks based on query
-        if 'wikipedia' in query:
-            speak('Searching Wikipedia...')
-            query = query.replace("wikipedia", "")
-            results = wikipedia.summary(query, sentences=2)
-            speak("According to Wikipedia")
-            print(results)
-            speak(results)
-        
-        elif 'go to youtube' in query:
-            webbrowser.open("youtube.com")
+                if 'wikipedia' in query:
+                    speak('Searching Wikipedia...')
+                    query = query.replace("wikipedia", "")
+                    results = wikipedia.summary(query, sentences=2)
+                    speak("According to Wikipedia")
+                    print(results)
+                    speak(results)
+                
+                elif 'go to youtube' in query:
+                    webbrowser.open("youtube.com")
 
-        elif 'open google' in query:
-            webbrowser.open("google.com")
+                elif 'open google' in query:
+                    webbrowser.open("google.com")
 
-        elif 'open stackoverflow' in query:
-            webbrowser.open("stackoverflow.com")   
+                elif 'open stackoverflow' in query:
+                    webbrowser.open("stackoverflow.com")   
 
-        elif 'the time' in query:
-            strTime = datetime.datetime.now().strftime("%H:%M:%S")    
-            speak(f"Sir, the time is {strTime}")
+                elif 'the time' in query:
+                    strTime = datetime.datetime.now().strftime("%H:%M:%S")    
+                    speak(f"Sir, the time is {strTime}")
 
-        elif 'open my code' in query:
-            codePath = "C:\\Users\\vsasp\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe"
-            os.startfile(codePath)
+                elif 'open my code' in query:
+                    codePath = "C:\\Users\\vsasp\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe"
+                    os.startfile(codePath)
 
-        elif 'what is your name' in query:
-            speak('my name is vighnesh')
+                elif 'what is your name' in query:
+                    speak('my name is vighnesh')
 
-        elif 'who are you' in query:
-            speak('I am Vignesh\'s assistant. He coded me')
+                elif 'who are you' in query:
+                    speak('I am Vignesh\'s assistant. He coded me')
 
-        elif 'quit' in query:
-            speak('good Bye')
-            quit()
-        elif 'healthy day' in query:
-            speak('yes sure, be healthy')
-            programmer.healthy()
-            quit()
+                elif 'exit' in query:
+                    speak('good Bye')
+                    quit()
+                
+                    
+                elif 'shutdown' in query:
+                    speak('are you sure, do you want to shutdown computer')
+                    query = takeCommand().lower()
+                    if 's' in query:
+                        os.system("shutdown /s /t 1")
+                    
+
+                elif 'restart' in query:
+                    speak('are you sure, do you want to restart computer')
+                    query = takeCommand().lower()
+                    if 'yes' in query:
+                        os.system("shutdown /r /t 1")
+                
+           
 
 
 

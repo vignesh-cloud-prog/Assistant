@@ -37,8 +37,8 @@ def log_now(act,msg):
             f.write(f"{msg} {datetime.now()}\n")
             print("Succesfully logged")
 
-# if __name__ == '__main__':
-def healthy():
+if __name__ == '__main__':
+
     # musiconloop("water.mp3", "stop")
     print("\n***** Start day with healthy mode, have a greate day *****\n")
     init_water = time()
